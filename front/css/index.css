@@ -96,8 +96,8 @@ nav form input{
     -webkit-transform: perspective(624px) rotateY(0deg);
     -moz-transform-origin-x:100%;
     -moz-transform: perspective(624px) rotateY(0deg);
-    transition:-webkit-transform 1s;
-    transition:-moz-transform 1s;
+    transition:transform 1s;
+
 }
 #center_up:hover{
     -webkit-transform: perspective(624px) rotateY(85deg);
