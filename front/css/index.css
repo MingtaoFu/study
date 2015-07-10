@@ -8,49 +8,135 @@ a:hover{
 
 nav{
     width:100%; 
-    
+    background:#E7E7E7; 
     height:50px;
 }
 
-nav a{  
-    display:inline-block;
+nav a,nav form{   
+    margin:12px;
+}
+
+nav form input{
+    border:solid 1px #A9A9A9;
+    border-radius:3px;
+}
+
+@media screen and (min-width:810px){
+    #drop_down{
+        height:100%;
+        float:right;
+        display:-webkit-flex;
+        display:-moz-flex;
+        display:flex;
+        display:-ms-flex;
+        flex-direction:row; 
+        justify-content: space-around;
+    }
+    #hr_1,#hr_2{
+        display:none;
+    }
+    #menu_btn{
+        display:none;
+    }
+}
+
+@media screen and (max-width:809px){
+    #drop_down{ 
+        width:100% ;
+        position:absolute;
+        z-index:1;
+        height:0;
+        overflow:hidden;
+    }
+    #drop_down *{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        
+       
+    }
+    nav hr{
+        width:80%;
+    }
+    #menu_btn{
+        float:right;
+    }
+}
+#logo{
+    margin-left:40px;
 }
 .nav_list{     
     height:100%;
     margin:10px;
 }
 
+#login_btn,#menu_btn{
+    height:60%;
+    margin:9px 20px 10px 20px;
+    background:white;
+    border-style:solid;
+    border-width:1px;
+    border-radius:3px;
+}
 #container{ 
+    margin-top:20px; 
     width:80%;
     margin-right:auto;
     margin-left:auto;
-    height:500px; 
+    height:700px; 
     border:1px black solid;
     font-size:0;
-}
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:flex;
+    display:-ms-flex;
+    flex-direction:row; 
+    justify-content: space-around;
 
-.column{ 
-    display:inline-block;
-    width:33.333%;
+}
+#container, #container div{
+    border-radius:10px;
+}
+.column{  
+    width:31%;
     height:100%;
+     display:-webkit-flex;
+    display:-moz-flex;
+    display:flex;
+    display:-ms-flex;
+    flex-direction:row; 
+    justify-content: space-around;   
+    flex-direction:column;
+}
+#column_center{
     
 }
-#column_left{
-    background:yellow;
+#column_left .up{
+    background:#337AB7;
+    height:35%
 }
-#column_right{
-    background:red;
+#column_left .down{
+    background:#D9534F;
+    height:55%;
 }
-.column .second{
-    height:50%;
+#column_right .second{
+    background:#F0AD4E;
 }
-.column .up{
-    background:grey;
+.second{
+    height:95%;
+}
+#column_center .up{
+    height:55%;
+    background:#5CB85C;
+}
+#column_center .down{
+    background:#5BC0DE;
+    height:35%;
 }
 .container{
     margin:10% 10% 10% 10% yellow;
     width:80%;
     height:80%;
-    background:yellowgreen;
+    background:yellowgreen; 
     
 }

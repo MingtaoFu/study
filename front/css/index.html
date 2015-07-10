@@ -9,34 +9,52 @@
     </head>
     <body>
         <nav>
-            <img width = '100px' height = '50px'>
-            <a href = 'javascript:void(0)'>
-                <span class = 'nav_list'>链接</span>
-            </a>
-             <a href = 'javascript:void(0)'>
-                <span class = 'nav_list'>链接</span>
-            </a>
-            <a href = 'javascript:void(0)'>
-                <span class = 'nav_list'>链接</span>
-            </a>
-             <a href = 'javascript:void(0)'>
-                <span class = 'nav_list'>链接</span>
-            </a>
-            
+            <img width = '100px' height = '50px' id = 'logo'>
+            <button id = 'menu_btn'>菜单</button>
+            <div id = 'drop_down'> 
 
-        </nav>
+                <a href = 'javascript:void(0)'>
+                    <span class = 'nav_list'>链接</span>
+                </a>
+                <hr>
+                <a href = 'javascript:void(0)'>
+                    <span class = 'nav_list'>链接</span>
+                </a>
+                <hr>
+                <a href = 'javascript:void(0)'>
+                    <span class = 'nav_list'>链接</span>
+                </a>
+                <hr>
+                <a href = 'javascript:void(0)'>
+                    <span class = 'nav_list'>链接</span>
+                </a>
+                <hr id = 'hr_1'> 
+                <form>
+                    <input placeholder = '键入关键字检索'/> 
+                </form>
+                <hr id = 'hr_2'>
+                <button id = 'login_btn'>登录/注册</button>
+
+
+            </div>
+        </nav> 
         <div id = 'container'>
             <div id = 'column_left' class = 'column'> 
-                <div class = 'container'>
+                <div class = 'second up'>
                 </div>
+                <div class = 'second down'>
+                </div>
+
             </div>
             <div id = 'column_center' class = 'column'>
-                <div class = 'second up'>
-                    <div class = 'container'>
-                    </div>
+                <div class = 'second up'> 
+                </div>
+                <div class = 'second down'> 
                 </div>
             </div>
             <div id = 'column_right' class = 'column div'>
+                <div class = 'second'>
+                </div>
             </div>
         </div>
     </body>
