@@ -62,6 +62,10 @@ nav form input{
         height:0px; 
         overflow:hidden;
         transition:0.5s height;
+        -webkit-transition:0.5s height;
+        -moz-transition:0.5s height;
+        -ms-transition:0.5s height;
+        -o-transition:0.5s height;
         display:none;
     }
     #drop_down *{
@@ -90,10 +94,14 @@ nav form input{
 #center_up{
     -webkit-transform-origin-x:100%;
     -webkit-transform: perspective(624px) rotateY(0deg);
+    -moz-transform-origin-x:100%;
+    -moz-transform: perspective(624px) rotateY(0deg);
     transition:-webkit-transform 1s;
+    transition:-moz-transform 1s;
 }
 #center_up:hover{
     -webkit-transform: perspective(624px) rotateY(85deg);
+    -moz-transform: perspective(624px) rotateY(85deg);
 }
 .nav_list{     
     height:100%;
