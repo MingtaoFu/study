@@ -129,9 +129,10 @@ nav form input{
     border-radius:10px;
 }
 .column{  
+    position:relative;
     width:31%;
     height:100%;
-     display:-webkit-flex;
+    display:-webkit-flex;
     display:-moz-flex;
     display:flex;
     display:-ms-flex;
