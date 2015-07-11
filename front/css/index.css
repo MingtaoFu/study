@@ -95,6 +95,7 @@ nav form input{
     -webkit-transform-origin-x:100%;
     -webkit-transform: perspective(624px) rotateY(0deg);
     -moz-transform-origin-x:100%;
+    transform-origin-x:100%;
     -moz-transform: perspective(624px) rotateY(0deg);
     transition:transform 1s;
 
@@ -136,7 +137,8 @@ nav form input{
 #container, #container div{
     border-radius:10px;
 }
-.column{  
+.column{
+    position: relative;
     width:31%;
     height:100%;
      display:-webkit-flex;
