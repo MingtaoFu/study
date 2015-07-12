@@ -78,6 +78,9 @@ nav form input{
     #login_btn{
         height:40px;
     }
+    nav form{
+
+    }
 }
 #logo{
     margin-left:40px;
@@ -165,10 +168,4 @@ nav form input{
     background:#5BC0DE;
     height:35%;
 }
-.container{
-    margin:10% 10% 10% 10% yellow;
-    width:80%;
-    height:80%;
-    background:yellowgreen; 
-    
-}
+

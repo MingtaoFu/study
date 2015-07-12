@@ -21,7 +21,7 @@ menu_btn.addEventListener('click',function(){
 
 var body = document.getElementsByTagName('body')[0];
 
-window.onresize = function(){ 
+window.onresize = function(){
     if (body.offsetWidth >= 810){
         console.log(1);
         drop_down.style.display = '';
@@ -33,7 +33,7 @@ window.onresize = function(){
 //regexp    search
 var search = document.getElementById('search');
 search.addEventListener('input',function(){
-    drop_container.innerHTML = '';
+    delete_list();
     var re = new RegExp(this.value, 'i');
     for (var i in group) {
         if (group[i].match(re) && this.value != '') {
@@ -43,10 +43,20 @@ search.addEventListener('input',function(){
             new_ele.href = 'javascript:void(0)';
             new_ele.addEventListener('click',function(){
                 search.value = this.innerHTML;
-                drop_container.innerHTML = '';
             });
             drop_container.appendChild(new_ele);
         }
     }
     delete re;
 });
+
+function delete_list(){
+    drop_container.innerHTML = '';
+}
+
+search.onblur = function(){
+    console.log(document.activeElement);
+//    if (document.activeElement.className != 'search_drop_list'){
+        delete_list();
+  //  }
+}
