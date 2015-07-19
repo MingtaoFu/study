@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src = 'three.js'></script>
+    <script>
+        var renderer = null,
+                scene = null,
+                camera = null,
+                cube = null,
+                animating = null;
+        function onLoad() {
+            var container = document.getElementById('container');
+
+            //创建渲染器，并加到div中
+            renderer = new THREE.WebGLRenderer({antialias:true});
+            renderer.setSize(container.offsetWidth,container.offsetHeight);
+//            renderer.setClearColor(0xEEEEEE);
+            container.appendChild(renderer.domElement);
+
+            //创建场景
+            scene = new THREE.Scene();
+
+            //创建相机，并添加到场景
+            camera = new THREE.PerspectiveCamera(45, container.offsetWidth/container.offsetHeight, 1, 4000);
+            camera.position.set(0, 0, 3.3333);
+            //scene.add(camera);
+
+            //创建一个平行光源
+            var light = new THREE.DirectionalLight(0xffffff, 1.5);
+            light.position.set(0, 0, 1);
+            scene.add(light);
+
+            var mapUrl = 'h.jpeg';
+            var map = THREE.ImageUtils.loadTexture(mapUrl);
+            var material = new THREE.MeshPhongMaterial({map:map});
+            var geometry = new THREE.BoxGeometry(1, 1, 1);
+            cube = new THREE.Mesh(geometry, material);
+            cube.rotation.x = Math.PI / 5;
+            cube.rotation.y = Math.PI / 5;
+            scene.add(cube);
+            //renderer.render(scene, camera);
+
+
+            //创建一个几何体，添加到场景中
+            //var geometry = new THREE.PlaneGeometry(1, 1);
+            //var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial());
+            //scene.add(mesh);
+
+            //渲染绘制
+            run();
+
+        }
+        function run(){
+            renderer.render(scene, camera);
+            cube.rotation.y -= 0.01;
+            cube.rotation.x -= 0.01;
+            cube.rotation.z -= 0.01;
+            requestAnimationFrame(run);
+        }
+
+    </script>
+</head>
+<body onload="onLoad()">
+    <div id = 'container' style="width: 500px; height: 500px;"></div>
+</body>
+</html>
