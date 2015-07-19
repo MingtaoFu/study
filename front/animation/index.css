@@ -1,0 +1,49 @@
+@-webkit-keyframes move{
+    0%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(100px);
+    }
+}
+
+@-webkit-keyframes ballmove {
+    0% {
+        transform: translateX(100px) rotate(0);
+    }
+    20% {
+
+        transform: translateX(-10px) rotate(-0.5turn);
+    }
+    100% {
+        transform: translateX(450px) rotate(2turn);
+    }
+}
+#sprite{
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+    -o-animation-delay: 2s;
+    animation-delay: 2s;
+
+    height: 111px;
+    width: 111px;
+
+    animation-name: ballmove;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+
+    -webkit-animation-fill-mode: backwards;
+    -moz-animation-fill-mode:  forwards;
+    -o-animation-fill-mode:  forwards;
+    animation-fill-mode:  both;
+
+    -webkit-animation-direction: alternate;
+    -moz-animation-direction:  alternate;
+    -o-animation-direction:  alternate;
+    animation-direction:  alternate;
+}
