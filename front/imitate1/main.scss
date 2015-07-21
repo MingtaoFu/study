@@ -1,0 +1,76 @@
+$mainContainerWidth: 1140px;
+$box_small_width: 255px;
+$box_middle_width: 540px;
+$attachedGreyWordColor: #8b99a0;
+$redColor: #f64c3f;
+$deep_back: rgba(0, 0, 0, 0.5);
+$grayColor: #91949d;
+$highLightColor: #F64C3F;
+
+a{margin: 0}
+.floatL{float: left}
+.bg_W{background-color: white}
+.fs_12{font-size: 12px}
+.fs_18{font-size: 18px}
+.fs_14{font-size: 14px}
+.fc_W{color: white;}
+.fc_G{color: $grayColor;}
+.fc_R{color: $redColor}
+.mt0{margin-top: 0}
+.mt1{margin-top: 1px;}
+.mt25{margin-top: 25px;}
+.mb0{margin-bottom: 0}
+.mb21{margin-bottom: 21px;}
+.mr1{margin-right: 1px;}
+body{background-image: url("bg.png")}
+#container{width: $mainContainerWidth; margin-left: auto; margin-right: auto}
+.content{position: relative; padding: 0 20px; line-height: 1.5;}
+.content_title{font-size: 16px;}
+.content_title2{font-size: 14px;}
+.content_attach{font-size: 12px; color: $attachedGreyWordColor;}
+.content_text{font-size: 14px;}
+.box_small{width: $box_small_width;}
+.box_middle{width: $box_middle_width;}
+.box{float: left; margin: 0 30px 30px 0; }
+.hero_image{
+    width: 100%;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    display: block;
+}
+.top_radius{
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+.notNone:before ,.notNone:after{content: ' '; display:table}
+.nav_list{height: 48px; line-height: 48px; padding: 0 20px 0 20px}
+.deep_back{background: $deep_back}
+.listStyleNone{list-style-type: none}
+.bottom_radiusR{
+    -webkit-border-radius: 0 0 6px 0;
+    -moz-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+.bottom_radiusL{
+    -webkit-border-radius: 0 0 0 6px;
+    -moz-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+.bottom_radius{
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+}
+.article_operation{
+    position: relative;
+    color: $grayColor;
+    padding: 0 23px 0 11px;
+    font-size: 11px;
+    line-height: 48px;
+    display: inline-block;
+}
+.nav_list:hover, .article_operation:hover{
+    background-color: $highLightColor;
+}

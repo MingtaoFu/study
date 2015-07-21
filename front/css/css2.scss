@@ -1,0 +1,29 @@
+$gray:#EFF0F1;
+$select_color: #5BC0DE;
+$letter_gray:#BCBCBC;
+#drop_container{
+    height: auto;
+    width: 180px;
+    position: absolute;
+    background: white;
+    z-index: 2;
+    border: $gray solid 1px;
+    border-top: 0px;
+}
+
+.search_drop_list{
+    width: 100%;
+    margin: 0;
+    display: block;
+
+}
+
+.search_drop_list:hover{
+    background: $select_color;
+    color: white;
+    text-decoration: none;
+}
+
+form{
+    color: $letter_gray;
+}
