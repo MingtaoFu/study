@@ -20,10 +20,14 @@ THREE.Camera.prototype.lookAtNew = function(Object) {
 };
 
 //墙壁对象
-function Wall(width, height, depth) {
+function Wall(width, height, depth, position) {
     var material = new THREE.MeshLambertMaterial( {color: 0x00ffff} );  //'#C8DBDB'
     var geometry = new THREE.BoxGeometry(width, height, depth);
     var box = new THREE.Mesh(geometry, material);
+    box.position.x = position.x;
+    box.position.y = position.y;
+    box.position.z = position.z;
+
     return box;
 }
 
@@ -35,71 +39,78 @@ function Walker() {
 
 //移动前的准备工作
 //由于相机只有一个，姑且把其写在prototype里，但以后肯定要改
-THREE.PerspectiveCamera.prototype.moveJSON = {
-    'front':{speed:0, accelerate:0, active:false},
-    'left':{speed:0, accelerate:0, active:false},
-    'right':{speed:0, accelerate:0, active:false},
-    'back':{speed:0, accelerate:0, active:false}
+THREE.CameraContainer = function () {
+    var camera_container = new THREE.Object3D();
+    camera_container.moveJSON = {
+        'front':{speed:0, accelerate:0, active:false},
+        'left':{speed:0, accelerate:0, active:false},
+        'right':{speed:0, accelerate:0, active:false},
+        'back':{speed:0, accelerate:0, active:false}
+    };
+    camera_container.setMoveProperties = function(accelerate, direction, limitedSpeed) {
+        //this.direction.speed = speed;
+        this.moveJSON[direction].accelerate = accelerate;
+
+        //console.log(this.moveJSON[direction].accelerate);
+        this.limitedSpeed = limitedSpeed || this.limitedSpeed;
+    };
+
+    //移动函数
+    camera_container.move = function (direction) {
+        //console.log(direction);
+        var This = this.moveJSON[direction];
+        if (This.accelerate < 0 && This.speed == 0) {
+            return false;
+        }
+
+        var xx = this.rotation.y;
+
+        var deltaX = Math.cos(ww);
+        console.log(this.rotation.y);
+        var deltaY = Math.sin(ww);
+        if (This.speed <= this.limitedSpeed && This.speed >= 0) {
+            console.log(This.accelerate);
+            This.speed += This.accelerate;
+            if (This.speed > this.limitedSpeed) {
+                This.speed = this.limitedSpeed;
+            } else if (This.speed < 0) {
+                This.speed = 0;
+            }
+        }
+
+        var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) / This.speed;
+        //console.log(camera.moveJSON.back.speed);
+        //alert(distance);
+        var move = {x:0, y:0};
+        switch (direction){
+            case 'left':{
+                move.x = - deltaY / distance;
+                move.y = deltaX / distance;
+                break;
+            }
+            case 'right':{
+                move.x = deltaY / distance;
+                move.y = - deltaX / distance;
+                break;
+            }
+            case 'front':{
+                move.x = deltaX / distance;
+                move.y = deltaY / distance;
+                break;
+            }
+            case 'back':{
+                move.x = - deltaX / distance;
+                move.y = - deltaY / distance;
+                break;
+            }
+            default :break;
+        }
+        this.position.x += move.x;
+        this.position.y += move.y;
+        return true;
+
+    };
+    return camera_container;
 };
 
-THREE.PerspectiveCamera.prototype.setMoveProperties = function(accelerate, direction, limitedSpeed) {
-    //this.direction.speed = speed;
-    this.moveJSON[direction].accelerate = accelerate;
 
-    console.log(this.moveJSON[direction].accelerate);
-    this.limitedSpeed = limitedSpeed || this.limitedSpeed;
-};
-
-//移动函数
-THREE.PerspectiveCamera.prototype.move = function (direction) {
-    //console.log(direction);
-    var This = this.moveJSON[direction];
-    if (This.accelerate < 0 && This.speed == 0) {
-        return false;
-    }
-
-
-    var deltaX = this.eye.x - this.position.x;
-    var deltaY = this.eye.y - this.position.y;
-    if (This.speed <= this.limitedSpeed && This.speed >= 0) {
-        console.log(This.accelerate);
-        This.speed += This.accelerate;
-        if (This.speed > this.limitedSpeed) {
-            This.speed = this.limitedSpeed;
-        } else if (This.speed < 0) {
-            This.speed = 0;
-        }
-    }
-
-    var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) / This.speed;
-    //console.log(camera.moveJSON.back.speed);
-    //alert(distance);
-    var move = {x:0, y:0};
-    switch (direction){
-        case 'left':{
-            move.x = - deltaY / distance;
-            move.y = deltaX / distance;
-            break;
-        }
-        case 'right':{
-            move.x = deltaY / distance;
-            move.y = - deltaX / distance;
-            break;
-        }
-        case 'front':{
-            move.x = deltaX / distance;
-            move.y = deltaY / distance;
-            break;
-        }
-        case 'back':{
-            move.x = - deltaX / distance;
-            move.y = - deltaY / distance;
-            break;
-        }
-        default :break;
-    }
-    this.position.x += move.x;
-    this.position.y += move.y;
-    return true;
-
-};
